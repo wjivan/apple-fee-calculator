@@ -1,0 +1,28 @@
+<!-- fee_calculator/templates/fee_calculator/results.html -->
+{% load humanize %}
+
+<h2>Fee Calculation Results</h2>
+<table class="results-table">
+    <tr>
+        <th>Fee Structure</th>
+        <th>Apple Fee</th>
+        <th>Third Party Fee</th>
+        <th>CTF</th>
+        <th>Total</th>
+    </tr>
+    {% for structure, fees in results.items %}
+        {% if structure != 'most_cost_effective' %}
+            <tr>
+                <td class="fee-structure">{{ structure|title|cut:"_"|capfirst }}</td>
+                <td>€{{ fees.apple_fee|intcomma }}</td>
+                <td>€{{ fees.third_party_fee|intcomma }}</td>
+                <td>€{{ fees.ctf|intcomma }}</td>
+                <td class="total-column">€{{ fees.total|intcomma }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+<p class="most-cost-effective">Most cost-effective option: {{ results.most_cost_effective|title|cut:"_"|capfirst }}</p>
+<div class="chart-container">
+    <img src="{{ chart_image }}" alt="Fee Comparison Chart" style="width: 100%; max-width: 800px;">
+</div>
