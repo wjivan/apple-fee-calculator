@@ -1,4 +1,4 @@
-# App Store Fee Calculator
+# Apple App Store Fee Calculator - Should I switch or not?
 
 Live Demo: https://apple-fee-calculator-90781680a2e3.herokuapp.com/
 
